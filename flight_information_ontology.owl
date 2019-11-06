@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="file:///some/path/flight_information_ontology.owl"
+         xmlns="file:///some/path/flight_information_ontology.owl#">
+
+<owl:Ontology rdf:about="file:///some/path/flight_information_ontology.owl"/>
+
+<owl:ObjectProperty rdf:about="#hat_einen_zielort">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Flugreise"/>
+  <rdfs:range rdf:resource="#Zielort"/>
+  <owl:inverseOf rdf:resource="#ist_zielort_von"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#ist_zielort_von">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Zielort"/>
+  <rdfs:range rdf:resource="#Flugreise"/>
+  <owl:inverseOf rdf:resource="#hat_einen_zielort"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hat_einen_startort">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Flugreise"/>
+  <rdfs:range rdf:resource="#Startort"/>
+  <owl:inverseOf rdf:resource="#ist_startort_von"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#ist_startort_von">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Startort"/>
+  <rdfs:range rdf:resource="#Flugreise"/>
+  <owl:inverseOf rdf:resource="#hat_einen_startort"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hat_flughäfen">
+  <rdfs:domain rdf:resource="#Bundesland"/>
+  <rdfs:domain rdf:resource="#Stadt"/>
+  <rdfs:domain rdf:resource="#Bundesstaat"/>
+  <rdfs:domain rdf:resource="#Land"/>
+  <rdfs:range rdf:resource="#Flughafen"/>
+  <owl:inverseOf rdf:resource="#ist_flughafen_von"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#ist_flughafen_von">
+  <rdfs:domain rdf:resource="#Flughafen"/>
+  <rdfs:range rdf:resource="#Bundesland"/>
+  <rdfs:range rdf:resource="#Stadt"/>
+  <rdfs:range rdf:resource="#Bundesstaat"/>
+  <rdfs:range rdf:resource="#Land"/>
+  <owl:inverseOf rdf:resource="#hat_flughäfen"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#besteht_aus_bundesländern">
+  <rdfs:domain rdf:resource="#Land"/>
+  <rdfs:range rdf:resource="#Bundesland"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#besteht_aus_bundesstaaten">
+  <rdfs:domain rdf:resource="#Land"/>
+  <rdfs:range rdf:resource="#Bundesstaat"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#ist_teil_von_land">
+  <rdfs:domain rdf:resource="#Bundesland"/>
+  <rdfs:domain rdf:resource="#Bundesstaat"/>
+  <rdfs:range rdf:resource="#Land"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#besteht_aus_städten">
+  <rdfs:domain rdf:resource="#Bundesland"/>
+  <rdfs:domain rdf:resource="#Bundesstaat"/>
+  <rdfs:range rdf:resource="#Stadt"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#ist_stadt_von_bundesland">
+  <rdfs:domain rdf:resource="#Stadt"/>
+  <rdfs:range rdf:resource="#Bundesland"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#ist_stadt_von_bundesstaat">
+  <rdfs:domain rdf:resource="#Stadt"/>
+  <rdfs:range rdf:resource="#Bundesstaat"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#ist_gültiger_startflughafen_für_flugreise">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Bundesland"/>
+  <rdfs:domain rdf:resource="#Flughafen"/>
+  <rdfs:domain rdf:resource="#Stadt"/>
+  <rdfs:domain rdf:resource="#Bundesstaat"/>
+  <rdfs:domain rdf:resource="#Land"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#ist_gültiger_zielflughafen_für_flugreise">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Stadt"/>
+  <rdfs:domain rdf:resource="#Flughafen"/>
+  <rdfs:domain rdf:resource="#Land"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hat_synonyme">
+  <rdfs:domain rdf:resource="#Bundesland"/>
+  <rdfs:domain rdf:resource="#Flughafen"/>
+  <rdfs:domain rdf:resource="#Stadt"/>
+  <rdfs:domain rdf:resource="#Bundesstaat"/>
+  <rdfs:domain rdf:resource="#Land"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="#Domänenkonzept">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Flugreise">
+  <rdfs:subClassOf rdf:resource="#Domänenkonzept"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Startort">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Zielort">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Land">
+  <rdfs:subClassOf rdf:resource="#Startort"/>
+  <rdfs:subClassOf rdf:resource="#Zielort"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Stadt">
+  <rdfs:subClassOf rdf:resource="#Startort"/>
+  <rdfs:subClassOf rdf:resource="#Zielort"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Flughafen">
+  <rdfs:subClassOf rdf:resource="#Startort"/>
+  <rdfs:subClassOf rdf:resource="#Zielort"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Bundesland">
+  <rdfs:subClassOf rdf:resource="#Startort"/>
+  <rdfs:subClassOf rdf:resource="#Zielort"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Bundesstaat">
+  <rdfs:subClassOf rdf:resource="#Startort"/>
+  <rdfs:subClassOf rdf:resource="#Zielort"/>
+</owl:Class>
+
+<Flugreise rdf:about="#Flugreise1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hat_einen_zielort rdf:resource="#New York"/>
+  <hat_einen_startort rdf:resource="#Düsseldorf"/>
+</Flugreise>
+
+<Stadt rdf:about="#Düsseldorf">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ist_gültiger_startflughafen_für_flugreise rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ist_gültiger_startflughafen_für_flugreise>
+  <ist_gültiger_zielflughafen_für_flugreise rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ist_gültiger_zielflughafen_für_flugreise>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">D-Dorf</hat_synonyme>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ddorf</hat_synonyme>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DUS</hat_synonyme>
+</Stadt>
+
+<Stadt rdf:about="#New York">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Bundesstaat"/>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NY</hat_synonyme>
+</Stadt>
+
+<Land rdf:about="#Amerika">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <besteht_aus_bundesstaaten rdf:resource="#New York"/>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vereinigte Staaten von Amerika</hat_synonyme>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">USA</hat_synonyme>
+</Land>
+
+<Land rdf:about="#Deutschland">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <besteht_aus_bundesländern rdf:resource="#Nord-Rhein-Westphalen"/>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bundesrepublik Deutschland</hat_synonyme>
+</Land>
+
+<Bundesland rdf:about="#Nord-Rhein-Westphalen">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NRW</hat_synonyme>
+</Bundesland>
+
+<Flughafen rdf:about="#Flughafen Düsseldorf">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ist_flughafen_von rdf:resource="#Düsseldorf"/>
+  <ist_gültiger_startflughafen_für_flugreise rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ist_gültiger_startflughafen_für_flugreise>
+  <ist_gültiger_zielflughafen_für_flugreise rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ist_gültiger_zielflughafen_für_flugreise>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Düsseldorf Airport</hat_synonyme>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Düsseldorf Flughafen</hat_synonyme>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DUS</hat_synonyme>
+</Flughafen>
+
+<Flughafen rdf:about="#John F. Kennedy Airport">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ist_flughafen_von rdf:resource="#New York"/>
+  <ist_gültiger_startflughafen_für_flugreise rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ist_gültiger_startflughafen_für_flugreise>
+  <ist_gültiger_zielflughafen_für_flugreise rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ist_gültiger_zielflughafen_für_flugreise>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JFK</hat_synonyme>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">John F. Kennedy</hat_synonyme>
+</Flughafen>
+
+<Flughafen rdf:about="#Newark Liberty International Airport">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ist_flughafen_von rdf:resource="#New York"/>
+  <ist_gültiger_startflughafen_für_flugreise rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ist_gültiger_startflughafen_für_flugreise>
+  <ist_gültiger_zielflughafen_für_flugreise rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ist_gültiger_zielflughafen_für_flugreise>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">New York-Newark International Airport</hat_synonyme>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EWR</hat_synonyme>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> KEWR</hat_synonyme>
+</Flughafen>
+
+<Flughafen rdf:about="#LaGuarda Airport">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ist_flughafen_von rdf:resource="#New York"/>
+  <ist_gültiger_startflughafen_für_flugreise rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ist_gültiger_startflughafen_für_flugreise>
+  <ist_gültiger_zielflughafen_für_flugreise rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ist_gültiger_zielflughafen_für_flugreise>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LGA</hat_synonyme>
+</Flughafen>
+
+
+</rdf:RDF>
