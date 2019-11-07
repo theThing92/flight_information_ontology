@@ -3,6 +3,9 @@ from owlready2 import *
 
 if __name__ == "__main__":
 
+
+    #### TODO: sehenswürdigkeiten ergänzen
+
     # create empty ontology with some iri (internationalized ressource identifier)
     onto = get_ontology("flight_information_ontology.owl")
 
@@ -61,25 +64,25 @@ if __name__ == "__main__":
             inverse_property = onto.hat_einen_startort
 
         class ist_gültiger_startflughafen_für_flugreise(DataProperty, FunctionalProperty):
-            domain = [Stadt, Flughafen, Land, Bundesstaat, Bundesland]
+            domain = [Stadt, Flughafen, Land, Bundesstaat, Bundesland, Sonderverwaltungszone]
             range = [bool]
 
         class ist_gültiger_zielflughafen_für_flugreise(DataProperty, FunctionalProperty):
-            domain = [Stadt, Flughafen, Land]
+            domain = [Stadt, Flughafen, Land, Bundesstaat, Bundesland, Sonderverwaltungszone]
             range = [bool]
 
         class hat_synonyme(DataProperty):
-            domain = [Stadt, Flughafen, Land, Bundesland, Bundesstaat]
+            domain = [Stadt, Flughafen, Land, Bundesstaat, Bundesland, Sonderverwaltungszone]
             range = [str]
 
         class hat_flughäfen(ObjectProperty):
-            domain = [Stadt, Bundesland, Bundesstaat, Land]
+            domain = [Stadt, Flughafen, Land, Bundesstaat, Bundesland, Sonderverwaltungszone]
             range = [Flughafen]
             inverse_property  = onto.ist_flughafen_von
 
         class ist_flughafen_von(ObjectProperty):
             domain = [Flughafen]
-            range = [Stadt, Bundesland, Bundesstaat, Land]
+            range = [Stadt, Flughafen, Land, Bundesstaat, Bundesland, Sonderverwaltungszone]
             inverse_property = onto.hat_flughäfen
 
         class besteht_aus_bundesländern(ObjectProperty):
@@ -95,7 +98,7 @@ if __name__ == "__main__":
             range = [Land]
 
         class besteht_aus_städten(ObjectProperty):
-            domain = [Bundesstaat, Bundesland]
+            domain = [Bundesstaat, Bundesland, Sonderverwaltungszone]
             range = [Stadt]
 
         class besteht_aus_sonderverwaltungszonen(ObjectProperty):
@@ -110,12 +113,18 @@ if __name__ == "__main__":
             domain = [Stadt]
             range = [Bundesstaat]
 
+        class ist_stadt_von_sonderverwaltungszone(ObjectProperty):
+            domain = [Stadt]
+            range = [Sonderverwaltungszone]
+
 
         # define individuals within the given ontology
-        reise = Flugreise(name="Flugreise1")
+        reise1 = Flugreise(name="Flugreise1")
+        reise2 = Flugreise(name="Flugreise2")
 
+        # start / end
         start = Stadt(name="Düsseldorf", hat_synonyme=["DUS", "D-Dorf", "Ddorf"])
-        ziel = Stadt(name="New York", hat_synonyme=["NY", "NYC"])
+        ziel1 = Stadt(name="New York", hat_synonyme=["NY", "NYC"])
         ziel2 = Stadt(name="Hongkong", hat_synonyme=["HK", "Hong Kong"])
 
         # countries
@@ -128,7 +137,6 @@ if __name__ == "__main__":
         new_york_bundesstaat = Bundesstaat(name="New York", hat_synonyme=["NY"])
         hongkong_sovezone = Sonderverwaltungszone(name="Hongkong", hat_synonyme = ["HK", "Hong Kong"])
 
-
         # airports
         düsseldorf_flughafen = Flughafen(name="Flughafen Düsseldorf", hat_synonyme=["Düsseldorf Flughafen", "Düsseldorf Airport","DUS"])
 
@@ -139,14 +147,21 @@ if __name__ == "__main__":
         hk_chep = Flughafen(name="Chek Lap Kok Hong Kong International Airport", hat_synonyme=["HKG", "Chek Lap Kok"])
         hk_shek = Flughafen(name="Shek Kong Airfield", hat_synonyme=["Shek Kong", "VHSK"])
 
-
         # define relations between individuals
-        reise.hat_einen_startort = start
-        reise.hat_einen_zielort = ziel
-        reise.hat_einen_zielort = ziel2
+        reise1.hat_einen_startort = start
+        reise1.hat_einen_zielort = ziel1
+
+        reise2.hat_einen_startort = start
+        reise2.hat_einen_zielort = ziel2
 
         start.ist_gültiger_startflughafen_für_flugreise = False
         start.ist_gültiger_zielflughafen_für_flugreise = False
+
+        ziel1.ist_gültiger_startflughafen_für_flugreise = False
+        ziel1.ist_gültiger_zielflughafen_für_flugreise = False
+
+        ziel2.ist_gültiger_startflughafen_für_flugreise = False
+        ziel2.ist_gültiger_zielflughafen_für_flugreise = False
 
         new_york_jfk.ist_gültiger_startflughafen_für_flugreise = False
         new_york_jfk.ist_gültiger_zielflughafen_für_flugreise = True
@@ -154,8 +169,9 @@ if __name__ == "__main__":
         düsseldorf_flughafen.ist_gültiger_startflughafen_für_flugreise = True
         düsseldorf_flughafen.ist_gültiger_zielflughafen_für_flugreise = False
 
+        # no internationl airport
         new_york_ewr.ist_gültiger_startflughafen_für_flugreise = False
-        new_york_ewr.ist_gültiger_zielflughafen_für_flugreise = True
+        new_york_ewr.ist_gültiger_zielflughafen_für_flugreise = False
 
         new_york_lga.ist_gültiger_startflughafen_für_flugreise = False
         new_york_lga.ist_gültiger_zielflughafen_für_flugreise = True
@@ -170,10 +186,10 @@ if __name__ == "__main__":
         deutschland.besteht_aus_bundesländern.append(düsseldorf_bundesland)
         china.besteht_aus_sonderverwaltungszonen.append(hongkong_sovezone)
 
-
         düsseldorf_flughafen.ist_flughafen_von.append(start)
-        new_york_lga.ist_flughafen_von.append(ziel)
-        new_york_ewr.ist_flughafen_von.append(ziel)
-        new_york_jfk.ist_flughafen_von.append(ziel)
-        hk_chep.ist_flughafen_von.append(ziel)
-        hk_shek.ist_flughafen_von.append(ziel)
+        new_york_lga.ist_flughafen_von.append(ziel1)
+        new_york_ewr.ist_flughafen_von.append(ziel1)
+        new_york_jfk.ist_flughafen_von.append(ziel1)
+
+        hk_chep.ist_flughafen_von.append(ziel2)
+        hk_shek.ist_flughafen_von.append(ziel2)
