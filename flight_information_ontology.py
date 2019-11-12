@@ -42,6 +42,9 @@ if __name__ == "__main__":
         class Sonderverwaltungszone(Startort, Zielort):
             namespace = onto
 
+        class Sehenswürdigkeit(Startort, Zielort):
+            namespace = onto
+
         # define realations between concepts/classes
         class hat_einen_zielort(ObjectProperty, FunctionalProperty):
             domain = [Flugreise]
@@ -64,25 +67,25 @@ if __name__ == "__main__":
             inverse_property = onto.hat_einen_startort
 
         class ist_gültiger_startflughafen_für_flugreise(DataProperty, FunctionalProperty):
-            domain = [Stadt, Flughafen, Land, Bundesstaat, Bundesland, Sonderverwaltungszone]
+            domain = [Stadt, Flughafen, Land, Bundesstaat, Bundesland, Sonderverwaltungszone, Sehenswürdigkeit]
             range = [bool]
 
         class ist_gültiger_zielflughafen_für_flugreise(DataProperty, FunctionalProperty):
-            domain = [Stadt, Flughafen, Land, Bundesstaat, Bundesland, Sonderverwaltungszone]
+            domain = [Stadt, Flughafen, Land, Bundesstaat, Bundesland, Sonderverwaltungszone, Sehenswürdigkeit]
             range = [bool]
 
         class hat_synonyme(DataProperty):
-            domain = [Stadt, Flughafen, Land, Bundesstaat, Bundesland, Sonderverwaltungszone]
+            domain = [Stadt, Flughafen, Land, Bundesstaat, Bundesland, Sonderverwaltungszone, Sehenswürdigkeit]
             range = [str]
 
         class hat_flughäfen(ObjectProperty):
-            domain = [Stadt, Flughafen, Land, Bundesstaat, Bundesland, Sonderverwaltungszone]
+            domain = [Stadt, Flughafen, Land, Bundesstaat, Bundesland, Sonderverwaltungszone, Sehenswürdigkeit]
             range = [Flughafen]
             inverse_property  = onto.ist_flughafen_von
 
         class ist_flughafen_von(ObjectProperty):
             domain = [Flughafen]
-            range = [Stadt, Flughafen, Land, Bundesstaat, Bundesland, Sonderverwaltungszone]
+            range = [Stadt, Flughafen, Land, Bundesstaat, Bundesland, Sonderverwaltungszone, Sehenswürdigkeit]
             inverse_property = onto.hat_flughäfen
 
         class besteht_aus_bundesländern(ObjectProperty):
@@ -117,6 +120,13 @@ if __name__ == "__main__":
             domain = [Stadt]
             range = [Sonderverwaltungszone]
 
+        class ist_sehenswürdigkeit_von_stadt(ObjectProperty, FunctionalProperty):
+            domain =[Sehenswürdigkeit]
+            range = [Stadt]
+
+        class hat_sehenswürdigkeiten(ObjectProperty):
+            domain = [Stadt]
+            range = [Sehenswürdigkeit]
 
         # define individuals within the given ontology
         reise1 = Flugreise(name="Flugreise1")
@@ -146,6 +156,22 @@ if __name__ == "__main__":
 
         hk_chep = Flughafen(name="Chek Lap Kok Hong Kong International Airport", hat_synonyme=["HKG", "Chek Lap Kok"])
         hk_shek = Flughafen(name="Shek Kong Airfield", hat_synonyme=["Shek Kong", "VHSK"])
+
+        # sights
+        düsseldorf_altstadt = Sehenswürdigkeit(name="Altstadt", hat_synonyme=["Düsseldorfer Altstadt"])
+        düsseldorf_königsallee = Sehenswürdigkeit(name="Königsallee", hat_synonyme=["KÖ", "Düsseldorfer Königsallee", "Königsallee Düsseldorf"])
+        düsseldorf_rheinturm = Sehenswürdigkeit(name="Rheinturm", hat_synonyme=["Düsseldorfer Rheinturm", "Rheinturm Düsseldorf"])
+        düsseldorf_schloss_benrath = Sehenswürdigkeit(name="Schloss Benrath", hat_synonyme=["Schloss Benrath Düsseldorf"])
+
+        new_york_freiheitsstatue = Sehenswürdigkeit(name="Freiheitsstatue", hat_synonyme=["Statue of Liberty", "Statue of Liberty New York", "Statue of Liberty NYC", "Statue of Liberty NY", "Freiheitsstatue New York", "Freiheitsstatue NYC", "Freiheitsstatue NY"])
+        new_york_central_park = Sehenswürdigkeit(name="Central Park", hat_synonyme=["Central Park New York"])
+        new_york_times_square = Sehenswürdigkeit(name="Times Square", hat_synonyme=["Times Square New York"])
+        new_york_rockefeller_center = Sehenswürdigkeit(name="Rockefeller Center", hat_synonyme=["Rockefeller Center New York"])
+
+        hongkong_victoria_peak = Sehenswürdigkeit(name="Victoria Peak", hat_synonyme=["Victoria Peak Hongkong", "Victoria Peak Hong Kong"])
+        hongkong_disney_land = Sehenswürdigkeit(name="Hong Kong Disneyland", hat_synonyme=["Hongkong Disneyland", "Hongkong Disney Land"])
+        hongkong_ocean_park = Sehenswürdigkeit(name="Ocean Park Hong Kong", hat_synonyme=["Ocean Park Hongkong"])
+        hongkong_victoria_harbour = Sehenswürdigkeit(name="Victoria Harbour", hat_synonyme=["Victoria Harbour Hongkong", "Victoria Harbour Hong Kong", "Victoria Hafen Hongkong", "Victoria Hafen Hong Kong"])
 
         # define relations between individuals
         reise1.hat_einen_startort = start
@@ -182,6 +208,42 @@ if __name__ == "__main__":
         hk_shek.ist_gültiger_startflughafen_für_flugreise = False
         hk_shek.ist_gültiger_zielflughafen_für_flugreise = True
 
+        new_york_freiheitsstatue.ist_gültiger_startflughafen_für_flugreise = False
+        new_york_freiheitsstatue.ist_gültiger_zielflughafen_für_flugreise = False
+
+        new_york_central_park.ist_gültiger_startflughafen_für_flugreise = False
+        new_york_central_park.ist_gültiger_zielflughafen_für_flugreise = False
+
+        new_york_times_square.ist_gültiger_startflughafen_für_flugreise = False
+        new_york_times_square.ist_gültiger_zielflughafen_für_flugreise = False
+
+        new_york_rockefeller_center.ist_gültiger_startflughafen_für_flugreise = False
+        new_york_rockefeller_center.ist_gültiger_zielflughafen_für_flugreise = False
+
+        hongkong_disney_land.ist_gültiger_startflughafen_für_flugreise = False
+        hongkong_disney_land.ist_gültiger_zielflughafen_für_flugreise = False
+
+        hongkong_ocean_park.ist_gültiger_startflughafen_für_flugreise = False
+        hongkong_ocean_park.ist_gültiger_zielflughafen_für_flugreise = False
+
+        hongkong_victoria_harbour.ist_gültiger_startflughafen_für_flugreise = False
+        hongkong_victoria_harbour.ist_gültiger_zielflughafen_für_flugreise = False
+
+        hongkong_victoria_peak.ist_gültiger_startflughafen_für_flugreise = False
+        hongkong_victoria_peak.ist_gültiger_zielflughafen_für_flugreise = False
+
+        düsseldorf_altstadt.ist_gültiger_startflughafen_für_flugreise = False
+        düsseldorf_altstadt.ist_gültiger_zielflughafen_für_flugreise = False
+
+        düsseldorf_königsallee.ist_gültiger_startflughafen_für_flugreise = False
+        düsseldorf_königsallee.ist_gültiger_zielflughafen_für_flugreise = False
+
+        düsseldorf_rheinturm.ist_gültiger_startflughafen_für_flugreise = False
+        düsseldorf_rheinturm.ist_gültiger_zielflughafen_für_flugreise = False
+
+        düsseldorf_schloss_benrath.ist_gültiger_startflughafen_für_flugreise = False
+        düsseldorf_schloss_benrath.ist_gültiger_zielflughafen_für_flugreise = False
+
         amerika.besteht_aus_bundesstaaten.append(new_york_bundesstaat)
         deutschland.besteht_aus_bundesländern.append(düsseldorf_bundesland)
         china.besteht_aus_sonderverwaltungszonen.append(hongkong_sovezone)
@@ -193,3 +255,33 @@ if __name__ == "__main__":
 
         hk_chep.ist_flughafen_von.append(ziel2)
         hk_shek.ist_flughafen_von.append(ziel2)
+
+        start.hat_sehenswürdigkeiten.append(düsseldorf_schloss_benrath)
+        start.hat_sehenswürdigkeiten.append(düsseldorf_rheinturm)
+        start.hat_sehenswürdigkeiten.append(düsseldorf_königsallee)
+        start.hat_sehenswürdigkeiten.append(düsseldorf_altstadt)
+
+        ziel1.hat_sehenswürdigkeiten.append(new_york_rockefeller_center)
+        ziel1.hat_sehenswürdigkeiten.append(new_york_freiheitsstatue)
+        ziel1.hat_sehenswürdigkeiten.append(new_york_times_square)
+        ziel1.hat_sehenswürdigkeiten.append(new_york_central_park)
+
+        ziel2.hat_sehenswürdigkeiten.append(hongkong_victoria_peak)
+        ziel2.hat_sehenswürdigkeiten.append(hongkong_victoria_harbour)
+        ziel2.hat_sehenswürdigkeiten.append(hongkong_ocean_park)
+        ziel2.hat_sehenswürdigkeiten.append(hongkong_disney_land)
+
+        hongkong_ocean_park.ist_sehenswürdigkeit_von_stadt = ziel2
+        hongkong_disney_land.ist_sehenswürdigkeit_von_stadt = ziel2
+        hongkong_victoria_harbour.ist_sehenswürdigkeit_von_stadt = ziel2
+        hongkong_victoria_peak.ist_sehenswürdigkeit_von_stadt = ziel2
+
+        new_york_central_park.ist_sehenswürdigkeit_von_stadt = ziel1
+        new_york_times_square.ist_sehenswürdigkeit_von_stadt = ziel1
+        new_york_freiheitsstatue.ist_sehenswürdigkeit_von_stadt = ziel1
+        new_york_rockefeller_center.ist_sehenswürdigkeit_von_stadt = ziel1
+
+        düsseldorf_altstadt.ist_sehenswürdigkeit_von_stadt = start
+        düsseldorf_königsallee.ist_sehenswürdigkeit_von_stadt = start
+        düsseldorf_rheinturm.ist_sehenswürdigkeit_von_stadt = start
+        düsseldorf_schloss_benrath.ist_sehenswürdigkeit_von_stadt = start
