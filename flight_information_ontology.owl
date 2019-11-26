@@ -37,26 +37,26 @@
 </owl:ObjectProperty>
 
 <owl:ObjectProperty rdf:about="#hat_flughäfen">
-  <rdfs:domain rdf:resource="#Sehenswürdigkeit"/>
-  <rdfs:domain rdf:resource="#Bundesland"/>
   <rdfs:domain rdf:resource="#Sonderverwaltungszone"/>
-  <rdfs:domain rdf:resource="#Land"/>
-  <rdfs:domain rdf:resource="#Bundesstaat"/>
   <rdfs:domain rdf:resource="#Flughafen"/>
+  <rdfs:domain rdf:resource="#Sehenswürdigkeit"/>
   <rdfs:domain rdf:resource="#Stadt"/>
+  <rdfs:domain rdf:resource="#Bundesland"/>
+  <rdfs:domain rdf:resource="#Bundesstaat"/>
+  <rdfs:domain rdf:resource="#Land"/>
   <rdfs:range rdf:resource="#Flughafen"/>
   <owl:inverseOf rdf:resource="#ist_flughafen_von"/>
 </owl:ObjectProperty>
 
 <owl:ObjectProperty rdf:about="#ist_flughafen_von">
   <rdfs:domain rdf:resource="#Flughafen"/>
-  <rdfs:range rdf:resource="#Sehenswürdigkeit"/>
-  <rdfs:range rdf:resource="#Bundesland"/>
   <rdfs:range rdf:resource="#Sonderverwaltungszone"/>
-  <rdfs:range rdf:resource="#Land"/>
-  <rdfs:range rdf:resource="#Bundesstaat"/>
   <rdfs:range rdf:resource="#Flughafen"/>
+  <rdfs:range rdf:resource="#Sehenswürdigkeit"/>
   <rdfs:range rdf:resource="#Stadt"/>
+  <rdfs:range rdf:resource="#Bundesland"/>
+  <rdfs:range rdf:resource="#Bundesstaat"/>
+  <rdfs:range rdf:resource="#Land"/>
   <owl:inverseOf rdf:resource="#hat_flughäfen"/>
 </owl:ObjectProperty>
 
@@ -71,14 +71,14 @@
 </owl:ObjectProperty>
 
 <owl:ObjectProperty rdf:about="#ist_teil_von_land">
-  <rdfs:domain rdf:resource="#Bundesstaat"/>
   <rdfs:domain rdf:resource="#Bundesland"/>
+  <rdfs:domain rdf:resource="#Bundesstaat"/>
   <rdfs:range rdf:resource="#Land"/>
 </owl:ObjectProperty>
 
 <owl:ObjectProperty rdf:about="#besteht_aus_städten">
-  <rdfs:domain rdf:resource="#Bundesstaat"/>
   <rdfs:domain rdf:resource="#Bundesland"/>
+  <rdfs:domain rdf:resource="#Bundesstaat"/>
   <rdfs:domain rdf:resource="#Sonderverwaltungszone"/>
   <rdfs:range rdf:resource="#Stadt"/>
 </owl:ObjectProperty>
@@ -116,36 +116,36 @@
 
 <owl:DatatypeProperty rdf:about="#ist_gültiger_startflughafen_für_flugreise">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  <rdfs:domain rdf:resource="#Sehenswürdigkeit"/>
-  <rdfs:domain rdf:resource="#Bundesland"/>
   <rdfs:domain rdf:resource="#Sonderverwaltungszone"/>
-  <rdfs:domain rdf:resource="#Land"/>
-  <rdfs:domain rdf:resource="#Bundesstaat"/>
   <rdfs:domain rdf:resource="#Flughafen"/>
+  <rdfs:domain rdf:resource="#Sehenswürdigkeit"/>
   <rdfs:domain rdf:resource="#Stadt"/>
+  <rdfs:domain rdf:resource="#Bundesland"/>
+  <rdfs:domain rdf:resource="#Bundesstaat"/>
+  <rdfs:domain rdf:resource="#Land"/>
   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
 </owl:DatatypeProperty>
 
 <owl:DatatypeProperty rdf:about="#ist_gültiger_zielflughafen_für_flugreise">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  <rdfs:domain rdf:resource="#Sehenswürdigkeit"/>
-  <rdfs:domain rdf:resource="#Bundesland"/>
   <rdfs:domain rdf:resource="#Sonderverwaltungszone"/>
-  <rdfs:domain rdf:resource="#Land"/>
-  <rdfs:domain rdf:resource="#Bundesstaat"/>
   <rdfs:domain rdf:resource="#Flughafen"/>
+  <rdfs:domain rdf:resource="#Sehenswürdigkeit"/>
   <rdfs:domain rdf:resource="#Stadt"/>
+  <rdfs:domain rdf:resource="#Bundesland"/>
+  <rdfs:domain rdf:resource="#Bundesstaat"/>
+  <rdfs:domain rdf:resource="#Land"/>
   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
 </owl:DatatypeProperty>
 
 <owl:DatatypeProperty rdf:about="#hat_synonyme">
-  <rdfs:domain rdf:resource="#Sehenswürdigkeit"/>
-  <rdfs:domain rdf:resource="#Bundesland"/>
   <rdfs:domain rdf:resource="#Sonderverwaltungszone"/>
-  <rdfs:domain rdf:resource="#Land"/>
-  <rdfs:domain rdf:resource="#Bundesstaat"/>
   <rdfs:domain rdf:resource="#Flughafen"/>
+  <rdfs:domain rdf:resource="#Sehenswürdigkeit"/>
   <rdfs:domain rdf:resource="#Stadt"/>
+  <rdfs:domain rdf:resource="#Bundesland"/>
+  <rdfs:domain rdf:resource="#Bundesstaat"/>
+  <rdfs:domain rdf:resource="#Land"/>
   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 </owl:DatatypeProperty>
 
@@ -220,26 +220,25 @@
   <hat_sehenswürdigkeiten rdf:resource="#Altstadt"/>
   <ist_gültiger_startflughafen_für_flugreise rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ist_gültiger_startflughafen_für_flugreise>
   <ist_gültiger_zielflughafen_für_flugreise rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ist_gültiger_zielflughafen_für_flugreise>
-  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DUS</hat_synonyme>
   <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">D-Dorf</hat_synonyme>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DUS</hat_synonyme>
   <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ddorf</hat_synonyme>
 </Stadt>
 
 <Stadt rdf:about="#New York">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Bundesstaat"/>
   <hat_sehenswürdigkeiten rdf:resource="#Rockefeller Center"/>
   <hat_sehenswürdigkeiten rdf:resource="#Freiheitsstatue"/>
   <hat_sehenswürdigkeiten rdf:resource="#Times Square"/>
   <hat_sehenswürdigkeiten rdf:resource="#Central Park"/>
   <ist_gültiger_startflughafen_für_flugreise rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ist_gültiger_startflughafen_für_flugreise>
   <ist_gültiger_zielflughafen_für_flugreise rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ist_gültiger_zielflughafen_für_flugreise>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NYC</hat_synonyme>
   <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NY</hat_synonyme>
 </Stadt>
 
 <Stadt rdf:about="#Hongkong">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Sonderverwaltungszone"/>
   <hat_sehenswürdigkeiten rdf:resource="#Victoria Peak"/>
   <hat_sehenswürdigkeiten rdf:resource="#Victoria Harbour"/>
   <hat_sehenswürdigkeiten rdf:resource="#Ocean Park Hong Kong"/>
@@ -252,7 +251,7 @@
 
 <Land rdf:about="#Amerika">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <besteht_aus_bundesstaaten rdf:resource="#New York"/>
+  <besteht_aus_bundesstaaten rdf:resource="#Bundesstaat New York"/>
   <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">USA</hat_synonyme>
   <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vereinigte Staaten von Amerika</hat_synonyme>
 </Land>
@@ -265,9 +264,9 @@
 
 <Land rdf:about="#China">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <besteht_aus_sonderverwaltungszonen rdf:resource="#Hongkong"/>
-  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Chinesische Repubrik</hat_synonyme>
+  <besteht_aus_sonderverwaltungszonen rdf:resource="#Sonderverwaltungszone Hongkong"/>
   <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Volksrepublik China</hat_synonyme>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Chinesische Repubrik</hat_synonyme>
   <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Land der aufgehenden Sonne</hat_synonyme>
 </Land>
 
@@ -276,14 +275,25 @@
   <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NRW</hat_synonyme>
 </Bundesland>
 
+<Bundesstaat rdf:about="#Bundesstaat New York">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NY</hat_synonyme>
+</Bundesstaat>
+
+<Sonderverwaltungszone rdf:about="#Sonderverwaltungszone Hongkong">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HK</hat_synonyme>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hong Kong</hat_synonyme>
+</Sonderverwaltungszone>
+
 <Flughafen rdf:about="#Flughafen Düsseldorf">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <ist_flughafen_von rdf:resource="#Düsseldorf"/>
   <ist_gültiger_startflughafen_für_flugreise rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ist_gültiger_startflughafen_für_flugreise>
   <ist_gültiger_zielflughafen_für_flugreise rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ist_gültiger_zielflughafen_für_flugreise>
   <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Düsseldorf Flughafen</hat_synonyme>
-  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Düsseldorf Airport</hat_synonyme>
   <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DUS</hat_synonyme>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Düsseldorf Airport</hat_synonyme>
 </Flughafen>
 
 <Flughafen rdf:about="#John F. Kennedy Airport">
@@ -300,9 +310,9 @@
   <ist_flughafen_von rdf:resource="#New York"/>
   <ist_gültiger_startflughafen_für_flugreise rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ist_gültiger_startflughafen_für_flugreise>
   <ist_gültiger_zielflughafen_für_flugreise rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ist_gültiger_zielflughafen_für_flugreise>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> KEWR</hat_synonyme>
   <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EWR</hat_synonyme>
   <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">New York-Newark International Airport</hat_synonyme>
-  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> KEWR</hat_synonyme>
 </Flughafen>
 
 <Flughafen rdf:about="#LaGuarda Airport">
@@ -344,9 +354,9 @@
   <ist_sehenswürdigkeit_von_stadt rdf:resource="#Düsseldorf"/>
   <ist_gültiger_startflughafen_für_flugreise rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ist_gültiger_startflughafen_für_flugreise>
   <ist_gültiger_zielflughafen_für_flugreise rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ist_gültiger_zielflughafen_für_flugreise>
-  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KÖ</hat_synonyme>
-  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Königsallee Düsseldorf</hat_synonyme>
   <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Düsseldorfer Königsallee</hat_synonyme>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Königsallee Düsseldorf</hat_synonyme>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KÖ</hat_synonyme>
 </Sehenswürdigkeit>
 
 <Sehenswürdigkeit rdf:about="#Rheinturm">
@@ -354,8 +364,8 @@
   <ist_sehenswürdigkeit_von_stadt rdf:resource="#Düsseldorf"/>
   <ist_gültiger_startflughafen_für_flugreise rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ist_gültiger_startflughafen_für_flugreise>
   <ist_gültiger_zielflughafen_für_flugreise rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ist_gültiger_zielflughafen_für_flugreise>
-  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rheinturm Düsseldorf</hat_synonyme>
   <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Düsseldorfer Rheinturm</hat_synonyme>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rheinturm Düsseldorf</hat_synonyme>
 </Sehenswürdigkeit>
 
 <Sehenswürdigkeit rdf:about="#Schloss Benrath">
@@ -371,13 +381,13 @@
   <ist_sehenswürdigkeit_von_stadt rdf:resource="#New York"/>
   <ist_gültiger_startflughafen_für_flugreise rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ist_gültiger_startflughafen_für_flugreise>
   <ist_gültiger_zielflughafen_für_flugreise rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ist_gültiger_zielflughafen_für_flugreise>
-  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Statue of Liberty</hat_synonyme>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Statue of Liberty NYC</hat_synonyme>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Freiheitsstatue New York</hat_synonyme>
   <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Statue of Liberty NY</hat_synonyme>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Statue of Liberty</hat_synonyme>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Statue of Liberty New York</hat_synonyme>
   <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Freiheitsstatue NYC</hat_synonyme>
   <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Freiheitsstatue NY</hat_synonyme>
-  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Freiheitsstatue New York</hat_synonyme>
-  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Statue of Liberty NYC</hat_synonyme>
-  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Statue of Liberty New York</hat_synonyme>
 </Sehenswürdigkeit>
 
 <Sehenswürdigkeit rdf:about="#Central Park">
@@ -436,8 +446,8 @@
   <ist_gültiger_startflughafen_für_flugreise rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ist_gültiger_startflughafen_für_flugreise>
   <ist_gültiger_zielflughafen_für_flugreise rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ist_gültiger_zielflughafen_für_flugreise>
   <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Victoria Hafen Hongkong</hat_synonyme>
-  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Victoria Harbour Hongkong</hat_synonyme>
   <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Victoria Hafen Hong Kong</hat_synonyme>
+  <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Victoria Harbour Hongkong</hat_synonyme>
   <hat_synonyme rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Victoria Harbour Hong Kong</hat_synonyme>
 </Sehenswürdigkeit>
 
