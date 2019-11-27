@@ -170,8 +170,8 @@ if __name__ == "__main__":
 
         # federal staates
         düsseldorf_bundesland = Bundesland(name="Nord-Rhein-Westphalen", hat_synonyme=["NRW"])
-        new_york_bundesstaat = Bundesstaat(name="New York", hat_synonyme=["NY"])
-        hongkong_sovezone = Sonderverwaltungszone(name="Hongkong", hat_synonyme=["HK", "Hong Kong"])
+        new_york_bundesstaat = Bundesstaat(name="Bundesstaat New York", hat_synonyme=["NY"])
+        hongkong_sovezone = Sonderverwaltungszone(name="Sonderverwaltungszone Hongkong", hat_synonyme=["HK", "Hong Kong"])
 
         # airports
         düsseldorf_flughafen = Flughafen(name="Flughafen Düsseldorf",
