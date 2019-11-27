@@ -10,7 +10,7 @@ Note: You need Python 3.x to run Owlready2, Python 2 **is not** supported.
 # Installation
 In the project root directory invoke
 ```
-pip -r requirements.txt 
+pip install -r requirements.txt 
 ```
 It is recommended to use a virtual environment for installing the package. See [here](https://docs.python.org/3/tutorial/venv.html) for details.
 
